@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imputeguide"
+version = "0.1.0"
+description = "Budget-constrained whole-table imputer selection for clustering"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+  {name = "Xiaoou Ding"},
+  {name = "Yanshuo Liu"},
+  {name = "Haifeng Cheng"},
+  {name = "Muyun Zhou"},
+  {name = "Chen Wang"},
+  {name = "Hengtong Zhang"},
+  {name = "Hongzhi Wang"},
+]
+requires-python = ">=3.11,<3.12"
+classifiers = [
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+  "numpy>=1.26,<2.0",
+  "scikit-learn>=1.4,<1.5",
+  "pyyaml>=6.0,<7.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.2,<9.0"]
+
+[project.scripts]
+imputeguide = "imputeguide.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "--strict-markers"
