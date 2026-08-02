@@ -1,0 +1,46 @@
+registry_version: imputeguide-19-v1
+expected_count: 19
+whole_table_only: true
+common_contract:
+  preserves_observed_cells: true
+  returns_same_shape: true
+  finite_output_required: true
+  failed_and_timed_out_attempts_consume_budget: true
+  timeout_seconds: 1800
+
+families:
+  statistical:
+    representative: mean
+  neighbor:
+    representative: knni
+  iterative_matrix:
+    representative: mice
+  tree:
+    representative: missforest
+  learned_generative_graph:
+    representative: gain
+
+fixed_probe_methods: [mean, knni, mice, missforest, gain]
+
+methods:
+  - {id: mean, label: Mean, family: statistical, implementation_status: available}
+  - {id: median, label: Median, family: statistical, implementation_status: available}
+  - {id: mode, label: Mode, family: statistical, implementation_status: available}
+  - {id: knni, label: KNNI, family: neighbor, implementation_status: available}
+  - {id: mice, label: MICE, family: iterative_matrix, implementation_status: available}
+  - {id: missforest, label: MissForest, family: tree, implementation_status: available}
+  - {id: iterative_rf, label: Iterative RF, family: tree, implementation_status: available}
+  - {id: soft_impute, label: SoftImpute, family: iterative_matrix, implementation_status: available}
+  - {id: gain, label: GAIN, family: learned_generative_graph, implementation_status: available}
+  - {id: miwae, label: MIWAE, family: learned_generative_graph, implementation_status: available}
+  - {id: hivae, label: HI-VAE, family: learned_generative_graph, implementation_status: available}
+  - {id: grape, label: GRAPE, family: learned_generative_graph, implementation_status: available}
+  - {id: diffputer, label: DiffPuter, family: learned_generative_graph, implementation_status: available}
+  - {id: mcflow, label: MCFlow, family: learned_generative_graph, implementation_status: available}
+  - {id: missdiff, label: MissDiff, family: learned_generative_graph, implementation_status: available}
+  - {id: nomi, label: NOMI, family: learned_generative_graph, implementation_status: available}
+  - {id: remasker, label: ReMasker, family: learned_generative_graph, implementation_status: available}
+  - {id: miri, label: MIRI, family: learned_generative_graph, implementation_status: available}
+  - {id: hyperimpute, label: HyperImpute, family: learned_generative_graph, implementation_status: available}
+
+pool_scope: imputeguide_19_methods

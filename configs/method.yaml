@@ -1,0 +1,35 @@
+method:
+  name: ImputeGuide
+  configuration_version: imputeguide-v1
+
+task:
+  objective: budget_bounded_whole_table_imputer_selection_for_clustering
+  target_labels_available_to_selector: false
+  missing_value_ground_truth_available_to_selector: false
+  output:
+    selected_imputer_count: 1
+    reusable_completed_table: true
+  downstream_clusterer:
+    algorithm: kmeans
+    k_source: evaluation_dataset_class_count
+    warning: Class count is shared by every method and must not otherwise enter selection.
+    standardize_completed_features: true
+
+evaluation:
+  historical_dataset_count: 40
+  target_dataset_count: 9
+  require_dataset_disjointness: true
+  imputer_count: 19
+  mechanisms: [MCAR, MAR, MNAR]
+  missing_rates: [0.10, 0.20, 0.30]
+  seeds: [11, 23, 42]
+  scenarios_per_target: 27
+  timeout_seconds_per_imputer: 1800
+  primary_metric: ari
+  secondary_metrics: [nmi, online_selection_time_seconds]
+  diagnostic_metrics: [nrmse, candidate_coverage, harmful_switch_rate]
+  aggregation:
+    order:
+      - average_seeds_within_mechanism_rate
+      - equal_average_nine_mechanism_rate_conditions
+      - equal_average_target_datasets
