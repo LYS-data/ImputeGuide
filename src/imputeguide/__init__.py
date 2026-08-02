@@ -16,16 +16,13 @@ from .opportunity import (
 from .protocol import ProtocolValidation, validate_protocol
 from .registry import (
     METHODS,
-    PAPER_METHODS,
     build_imputer,
-    build_paper_imputer,
     describe_imputer,
-    describe_paper_imputer,
     methods,
-    paper_methods,
 )
 from .selector import SelectionResult, select_from_structural_evidence
 from .sampling import missing_fraction, stratified_validation_rows
+from .runner import TargetSelectionRun, run_csv, run_target_selection
 from .structural import (
     ComponentMap,
     PerturbationPlan,
@@ -45,7 +42,6 @@ __all__ = [
     "HistoricalRanking",
     "METHODS",
     "PerturbationPlan",
-    "PAPER_METHODS",
     "ProtocolValidation",
     "ProbeRanking",
     "ScenarioMatch",
@@ -54,21 +50,21 @@ __all__ = [
     "StableStrategy",
     "StructuralPerturbation",
     "StructuralScore",
+    "TargetSelectionRun",
     "build_perturbation_plan",
     "build_imputer",
-    "build_paper_imputer",
     "build_stable_strategy",
     "block_balanced_similarity",
     "confirm_challenger",
     "execute_whole_table",
     "describe_imputer",
-    "describe_paper_imputer",
     "merge_candidate_rankings",
     "missing_fraction",
     "methods",
-    "paper_methods",
     "rank_historical_opportunities",
     "rank_probe_expansion",
+    "run_csv",
+    "run_target_selection",
     "score_perturbation",
     "score_plan",
     "select_from_structural_evidence",

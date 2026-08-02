@@ -76,6 +76,30 @@ python -m pip install -r requirements/full.txt
 
 ## Usage
 
+Run target-specific selection on an incomplete CSV table:
+
+```bash
+python -m imputeguide run \
+    --input data/raw/example/data.csv \
+    --output outputs/example \
+    --clusters 3 \
+    --anchor mode \
+    --history-ranking knni \
+    --probe-ranking iterative_rf \
+    --opportunity-score 1.0
+```
+
+`--anchor` is the stable strategy. `--history-ranking` and `--probe-ranking`
+accept the ordered candidates produced by the offline evidence and target-probe
+stages. The command executes the bounded candidate set, performs paired
+structural validation, and writes:
+
+```text
+outputs/example/
+├── completed.csv
+└── selection.json
+```
+
 Imputers share a whole-table execution interface. The following example runs
 KNNI on an incomplete NumPy matrix:
 
