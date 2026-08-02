@@ -1,4 +1,4 @@
-.PHONY: install validate test-core
+.PHONY: install validate test
 
 install:
 	python -m pip install -e ".[test]"
@@ -6,5 +6,5 @@ install:
 validate:
 	python -m imputeguide validate-config --root .
 
-test-core:
-	python -m pytest tests/test_imputeguide_core.py -q
+test:
+	python -m pytest -q
