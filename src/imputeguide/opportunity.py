@@ -1,4 +1,4 @@
-"""Paper-aligned history and fixed-probe opportunity ranking."""
+"""History and fixed-probe opportunity ranking."""
 
 from __future__ import annotations
 
@@ -47,7 +47,7 @@ def block_balanced_similarity(
     block_weights: Sequence[float],
     epsilon: float,
 ) -> float:
-    """Compute the paper's nonnegative weighted block-cosine similarity."""
+    """Compute nonnegative weighted block-cosine similarity."""
 
     if len(target_blocks) != len(historical_blocks) or len(target_blocks) != len(block_weights):
         raise ValueError("profile block and weight counts must agree")

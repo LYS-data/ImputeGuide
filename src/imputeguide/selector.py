@@ -36,7 +36,7 @@ def select_from_structural_evidence(
     bootstrap_seed: int,
     full_table_budget: int,
 ) -> SelectionResult:
-    """Execute the paper decision rule over already-computed paired evidence.
+    """Execute the selection rule over already-computed paired evidence.
 
     This pure function deliberately does not inspect labels or missing-value
     ground truth. Failed alternatives cannot invalidate a successful anchor.

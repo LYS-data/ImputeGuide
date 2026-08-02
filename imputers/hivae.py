@@ -31,7 +31,7 @@ except ImportError:  # pragma: no cover
 class HIVAEImputer(BaseImputer):
     """Numeric-only HIVAE wrapper.
 
-    The original HI-VAE paper targets heterogeneous data. In the current project
+    The original HI-VAE method targets heterogeneous data. In this project
     phase we only support numeric columns, so this wrapper generates a temporary
     types file with all variables marked as `real` and delegates the core graph
     construction to the vendored HI-VAE implementation.

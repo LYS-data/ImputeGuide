@@ -38,4 +38,4 @@ seeds:
   confirmation_offset: 300007
   repeat_stride: 7919
 
-configuration_scope: paper_method_parameters
+configuration_scope: imputeguide_method_parameters

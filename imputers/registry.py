@@ -1,4 +1,4 @@
-"""Frozen backend registry for the 19 imputers evaluated in the paper."""
+"""Backend registry for the 19 ImputeGuide imputers."""
 
 from __future__ import annotations
 
@@ -109,7 +109,7 @@ class ImputerRegistry:
         specs = _specs()
         self._registry = {spec.name: spec for spec in specs}
         if len(self._registry) != 19:
-            raise RuntimeError("paper registry must contain exactly 19 unique methods")
+            raise RuntimeError("registry must contain exactly 19 unique methods")
 
     def list_imputers(self, *, available_only: bool = False) -> list[str]:
         methods = list(self._registry)
@@ -121,7 +121,7 @@ class ImputerRegistry:
     def get_spec(self, name: str) -> ImputerSpec:
         key = name.lower()
         if key not in self._registry:
-            raise KeyError(f"Unknown paper imputer: {name}")
+            raise KeyError(f"Unknown imputer: {name}")
         return self._registry[key]
 
     def is_available(self, name: str) -> bool:

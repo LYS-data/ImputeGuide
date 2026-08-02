@@ -67,7 +67,7 @@ def build_stable_strategy(
     minimum_common_datasets: int,
     registry_order: Sequence[str] | None = None,
 ) -> StableStrategy:
-    """Build the paper's dataset-macro, stability-penalized default.
+    """Build the dataset-macro, stability-penalized default.
 
     Failed runs contribute to coverage but receive no synthetic utility.
     A dataset enters the common comparison set only when every eligible method

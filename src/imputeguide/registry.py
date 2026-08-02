@@ -32,14 +32,6 @@ METHODS = (
     "hyperimpute",
 )
 
-# Compatibility alias retained for earlier releases.
-PAPER_METHODS = METHODS
-
-
-def paper_methods() -> tuple[str, ...]:
-    return METHODS
-
-
 def methods() -> tuple[str, ...]:
     """Return the supported imputation methods in registry order."""
 
@@ -61,12 +53,6 @@ def build_imputer(method: str, **parameters: Any) -> object:
     return legacy_registry.DEFAULT_REGISTRY.build(normalized, **parameters)
 
 
-def build_paper_imputer(method: str, **parameters: Any) -> object:
-    """Compatibility alias for :func:`build_imputer`."""
-
-    return build_imputer(method, **parameters)
-
-
 def describe_imputer(method: str) -> dict[str, Any]:
     """Describe a supported imputer and its dependencies."""
 
@@ -75,9 +61,3 @@ def describe_imputer(method: str) -> dict[str, Any]:
         raise KeyError(f"unsupported imputation method: {method}")
     legacy_registry = import_module("imputers.registry")
     return legacy_registry.DEFAULT_REGISTRY.describe(normalized)
-
-
-def describe_paper_imputer(method: str) -> dict[str, Any]:
-    """Compatibility alias for :func:`describe_imputer`."""
-
-    return describe_imputer(method)

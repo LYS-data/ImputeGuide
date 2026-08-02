@@ -28,7 +28,7 @@ def validate_completion(
     *,
     observed_tolerance: float = 0.0,
 ) -> np.ndarray:
-    """Enforce the paper's reusable whole-table completion contract."""
+    """Enforce the reusable whole-table completion contract."""
 
     source = np.asarray(incomplete, dtype=float)
     result = np.asarray(completion, dtype=float)

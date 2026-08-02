@@ -31,7 +31,7 @@ def confirm_challenger(
     seed: int,
     minimum_paired_units: int = 5,
 ) -> ConfirmationDecision:
-    """Apply the paper's one-sided empirical paired-bootstrap switch gate."""
+    """Apply the one-sided empirical paired-bootstrap switch gate."""
 
     anchor_values = np.asarray(anchor_scores, dtype=float)
     challenger_values = np.asarray(challenger_scores, dtype=float)
@@ -57,7 +57,7 @@ def confirm_challenger(
     )
     means = differences[indices].mean(axis=1)
     lower = float(np.quantile(means, alpha))
-    # Preserve the paper's strict gate under floating-point representation:
+    # Preserve the strict gate under floating-point representation:
     # a value numerically equal to the margin must retain the anchor.
     equal_within_roundoff = np.isclose(lower, margin, rtol=1e-12, atol=1e-15)
     switched = bool(lower > margin and not equal_within_roundoff)

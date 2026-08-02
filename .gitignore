@@ -25,17 +25,11 @@ venv/
 .DS_Store
 *.swp
 
-# Raw/derived data and model artifacts
+# Raw data, generated outputs, and model files
 data/*
 !data/README.md
-!data/provenance_audit.yaml
-!data/manifests/
-!data/manifests/**
-!data/splits/
-!data/splits/**
 results/*
-artifacts/runs/*
-artifacts/release/*
+outputs/*
 logs/
 lightning_logs/
 saved_models/

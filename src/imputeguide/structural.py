@@ -1,4 +1,4 @@
-"""Paired, label-free structural scoring from the paper protocol.
+"""Paired, label-free structural scoring for ImputeGuide.
 
 These functions consume cached validation slices. Imputers must be fitted on
 the full target table beforehand; target labels and hidden values are never
