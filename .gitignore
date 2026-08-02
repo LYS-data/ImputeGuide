@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+build/
+dist/
+
+# Local environments and secrets
+.venv/
+.venv-*/
+venv/
+*_venv/
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+*.swp
+
+# Raw/derived data and model artifacts
+data/*
+!data/README.md
+!data/provenance_audit.yaml
+!data/manifests/
+!data/manifests/**
+!data/splits/
+!data/splits/**
+results/*
+artifacts/runs/*
+artifacts/release/*
+logs/
+lightning_logs/
+saved_models/
+wandb/
+
+# Notebook and plotting caches
+.ipynb_checkpoints/
+.cache/
+matplotlib-cache/
+
+# LaTeX build products (source PDFs/EPS remain trackable)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Scheduler/runtime scratch
+*.slurm
+*.pid
+*.tmp
+.pt_tmp/
+
+# Locally assembled clean repository (has its own Git history)
+/release/

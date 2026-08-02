@@ -1,0 +1,6 @@
+# Core ImputeGuide environment.
+-r requirements/core.txt
+
+# Deep-learning imputers have hardware-specific PyTorch/TensorFlow/PyG
+# requirements. Install compatible accelerator wheels first, then run:
+#   pip install -r requirements/full.txt

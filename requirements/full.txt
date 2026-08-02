@@ -1,0 +1,21 @@
+-r core.txt
+
+# Classical and AutoML backends
+fancyimpute==0.7.0
+cvxpy==1.6.5
+hyperimpute==0.1.17
+lightgbm==4.3.0
+
+# Deep-learning backends. Install CUDA-matched PyTorch/PyG wheels when using a
+# GPU; the versions below define the supported environment.
+torch==2.2.2
+torchvision==0.17.2
+tensorflow==2.16.1
+tf-keras==2.16.0
+tensorflow-probability==0.24.0
+torch-geometric==2.5.3
+geomloss==0.3.0
+timm==1.0.7
+hnswlib==0.8.0
+neural-tangents==0.6.5
+packaging==24.2

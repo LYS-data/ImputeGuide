@@ -1,0 +1,9 @@
+name: imputeguide
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.9
+  - pip=24.0
+  - pip:
+      - -r requirements/core.txt
+      - -e .
