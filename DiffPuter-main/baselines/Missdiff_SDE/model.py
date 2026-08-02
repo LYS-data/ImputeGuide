@@ -6,7 +6,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim
 from torch import Tensor
-from diffusion_utils import EDMLoss
+from .diffusion_utils import EDMLoss
 import pdb
 
 ModuleType = Union[str, Callable[..., nn.Module]]

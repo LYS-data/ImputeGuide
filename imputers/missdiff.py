@@ -1,14 +1,11 @@
 """Matrix adapter for the vendored MissDiff diffusion core.
 
-MissDiff is retained as a candidate-pool method, not presented as a top-venue
-baseline: the verifiable record is an arXiv paper / ICLR 2024 submission.
+MissDiff is retained as an imputation candidate through its public source.
 """
 
 from __future__ import annotations
 
-from pathlib import Path
-import sys
-from types import ModuleType
+from importlib.util import find_spec
 from typing import Any
 
 import numpy as np
@@ -16,14 +13,11 @@ import numpy as np
 from imputers.base import BaseImputer
 
 
-ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "DiffPuter-main" / "baselines" / "Missdiff_SDE"
-
 try:
     import torch
     from torch.utils.data import DataLoader
 
-    HAS_MISSDIFF_DEPS = SOURCE.is_dir()
+    HAS_MISSDIFF_DEPS = find_spec("Missdiff_SDE") is not None
 except Exception:  # pragma: no cover
     torch = None
     DataLoader = None
@@ -31,15 +25,6 @@ except Exception:  # pragma: no cover
 
 
 def _load_core():
-    parent = SOURCE.parent
-    for path in (str(SOURCE), str(parent)):
-        if path not in sys.path:
-            sys.path.insert(0, path)
-    if "Missdiff_SDE" not in sys.modules:
-        package = ModuleType("Missdiff_SDE")
-        package.__path__ = [str(SOURCE)]  # type: ignore[attr-defined]
-        package.__package__ = "Missdiff_SDE"
-        sys.modules["Missdiff_SDE"] = package
     from Missdiff_SDE.model import MLPDiffusion, Model
     from Missdiff_SDE.diffusion_utils import impute_mask
 
@@ -152,6 +137,6 @@ class MissDiffImputer(BaseImputer):
             "num_trials": self.num_trials,
             "inference_batch_size": self.inference_batch_size,
             "device": self.device,
-            "source_path": str(SOURCE),
+            "source_package": "Missdiff_SDE",
         })
         return params

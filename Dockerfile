@@ -11,8 +11,13 @@ RUN python -m pip install --upgrade pip==24.0 \
 
 COPY pyproject.toml README.md LICENSE ./
 COPY src/ src/
+COPY imputers/ imputers/
+COPY utils/ utils/
+COPY external_dependencies/ external_dependencies/
+COPY DiffPuter-main/ DiffPuter-main/
 COPY configs/ configs/
-COPY tests/test_imputeguide_core.py tests/test_imputeguide_core.py
-RUN python -m pip install --no-deps -e .
+COPY tests/ tests/
+RUN python -m pip install --no-deps -e . \
+    && python -m pip check
 
-CMD ["python", "-m", "pytest", "tests/test_imputeguide_core.py", "-q"]
+CMD ["python", "-m", "pytest", "-q"]

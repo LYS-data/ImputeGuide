@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-import sys
+from importlib.util import find_spec
 from types import SimpleNamespace
 from typing import Any
 
@@ -12,22 +11,16 @@ import numpy as np
 from imputers.base import BaseImputer
 
 
-ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "DiffPuter-main" / "baselines" / "MCFlow"
-
 try:
     import torch
 
-    HAS_MCFLOW_DEPS = SOURCE.is_dir()
+    HAS_MCFLOW_DEPS = find_spec("MCFlow") is not None
 except Exception:  # pragma: no cover
     torch = None
     HAS_MCFLOW_DEPS = False
 
 
 def _load_core():
-    baselines = SOURCE.parent
-    if str(baselines) not in sys.path:
-        sys.path.insert(0, str(baselines))
     from MCFlow.loader import DataLoader as MCFlowData
     from MCFlow.models import InterpRealNVP, LatentToLatentApprox
     from MCFlow import util
@@ -148,7 +141,7 @@ class MCFlowImputer(BaseImputer):
             "learning_rate": self.learning_rate,
             "reset_imputations": self.reset_imputations,
             "device": self.device,
-            "source_path": str(SOURCE),
+            "source_package": "MCFlow",
             "source": "official CVPR 2020 MCFlow training flow",
             "compatibility_fix": (
                 "both official losses are backpropagated before optimizer steps "
